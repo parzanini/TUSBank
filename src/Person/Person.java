@@ -6,6 +6,12 @@ public abstract class Person {
     private String lastName;
     private String address;
 
+    public Person(String name, String address, String phone) {
+        this.firstName = name;
+        this.address = address;
+        this.lastName = phone;
+    }
+
     public String getFirstName() {
         return firstName;
     }
