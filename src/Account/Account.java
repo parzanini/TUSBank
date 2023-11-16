@@ -1,6 +1,6 @@
 package Account;
 
-import Person.Customer;
+import Person.*;
 
 import java.time.LocalDate;
 
@@ -10,8 +10,10 @@ public abstract class Account {
     private Customer custID;
     private double balance;
     private LocalDate dataCreated;
+    private static int nextID = 1;
 
     public Account(Customer custID, double balance, LocalDate dataCreated) {
+        this.id=getNextID();
         this.custID = custID;
         this.balance = balance;
         this.dataCreated = dataCreated;
@@ -49,8 +51,12 @@ public abstract class Account {
         this.dataCreated = dataCreated;
     }
 
+    private static int getNextID() {
+        return nextID++;
+    }
+
     @Override
     public String toString() {
-        return String.format("Account ID: %d\nCustomer ID: %d\nBalance: %.2f\nDate Created: %s\n", id, getCustID().getCustID(), balance, dataCreated);
+        return String.format("Account ID: %d\nOwner: %s\nBalance: %.2f\nDate Created: %s\n", getId(), getCustID().toString(), getBalance(), getDataCreated());
     }
 }

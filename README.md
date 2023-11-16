@@ -10,3 +10,11 @@ My Java Project for the first semester of the second year
 -Started working on the main class
 -Created methods toString and fixed some mistakes I made when I created the classes
 -Deposit method created and tested using a test instance of the class
+
+16/11/2023
+
+-Several fixes to the code
+-Added Withdraw method
+-Added Check Balance method
+-Added Admin Mode for bank employees
+-Started working on bank employee methods

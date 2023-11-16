@@ -6,8 +6,9 @@ public class Customer extends Person {
 
     private int custID;
 
-    public Customer(String name, String address, String phone, int custID) {
-        super(name, address, phone);
+    public Customer(String name,String lastName , String phone,Address address, int custID) {
+        super(name, lastName, phone,address);
+
         this.custID = custID;
     }
 
@@ -19,8 +20,10 @@ public class Customer extends Person {
         this.custID = custID;
     }
 
+
+
     @Override
     public String toString() {
-        return String.format("Customer ID: %d\nName: %s\nAddress: %s\nPhone: %s\n", custID, getFirstName(), getAddress(), getLastName());
+        return super.toString() + String.format("\nCustomer ID: %d", custID);
     }
 }

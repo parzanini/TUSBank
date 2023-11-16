@@ -6,8 +6,8 @@ import Person.BankStaff;
 public class BankOfficer extends BankStaff {
     private Position position=Position.BANKOFFICER;
 
-    public BankOfficer(String name, String address, String phone, int staffID, double salary, Position position) {
-        super(name, address, phone, staffID, salary);
+    public BankOfficer(String name, String lastName, String phone,Address address, int staffID, double salary, Position position) {
+        super(name, lastName, phone,address, staffID, salary);
         this.position=position;
     }
     public Position getPosition() {
@@ -18,5 +18,8 @@ public class BankOfficer extends BankStaff {
         this.position = position;
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString() + String.format("\nPosition: %s", position);
+    }
 }

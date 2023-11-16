@@ -4,11 +4,11 @@ import Person.BankStaff;
 
 public class BankManager extends BankStaff {
 
-    private Position position=Position.BANKMANAGER;
+    private Position position;
 
 
-    public BankManager(String name, String address, String phone, int staffID, double salary, Position position) {
-        super(name, address, phone, staffID, salary);
+    public BankManager(String name, String lastName, String phone,Address address, int staffID, double salary, Position position) {
+        super(name, lastName, phone,address, staffID, salary);
         this.position=position;
 
     }
@@ -19,6 +19,10 @@ public class BankManager extends BankStaff {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+    @Override
+    public String toString() {
+        return super.toString() + String.format("\nPosition: %s", position);
     }
 
 }

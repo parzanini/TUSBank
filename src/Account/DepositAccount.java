@@ -1,7 +1,7 @@
 package Account;
 
-import Account.Account;
-import Person.Customer;
+
+import Person.*;
 
 import java.time.LocalDate;
 
@@ -20,12 +20,12 @@ public class DepositAccount extends Account {
     }
 
     public void setAir(double air) {
-        this.air = air;
+        DepositAccount.air = air;
     }
 
 @Override
     public String toString() {
-        return String.format("Account ID: %d\nCustomer ID: %d\nBalance: %.2f\nDate Created: %s\nAnnual Interest Rate: %.2f\n", getId(), getCustID().getCustID(), getBalance(), getDataCreated(), getAir());
+        return super.toString() + String.format("Annual Interest Rate: %.2f\n", getAir());
     }
 
 

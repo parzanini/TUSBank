@@ -7,8 +7,8 @@ public class BankStaff extends Person {
     private int staffID;
     private double salary;
 
-    public BankStaff(String name, String address, String phone, int staffID, double salary) {
-        super(name, address, phone);
+    public BankStaff(String name, String lastName, String phone,Address address, int staffID, double salary) {
+        super(name, lastName, phone,address);
         this.staffID = staffID;
         this.salary = salary;
     }
@@ -33,7 +33,7 @@ public class BankStaff extends Person {
 
     @Override
         public String toString() {
-            return String.format("Staff ID: %d\nName: %s\nAddress: %s\nPhone: %s\nSalary: %.2f\n", staffID, getFirstName(), getAddress(), getLastName(), salary);
+            return super.toString() + String.format("\nStaff ID: %d\nSalary: %.2f", staffID, salary);
         }
 
 }

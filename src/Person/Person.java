@@ -4,12 +4,16 @@ public abstract class Person {
 
     private String firstName;
     private String lastName;
-    private String address;
 
-    public Person(String name, String address, String phone) {
+    private String phone;
+    private Address address;
+
+    public Person(String name, String lastName, String phone,Address address) {
         this.firstName = name;
+        this.lastName = lastName;
+
+        this.phone = phone;
         this.address = address;
-        this.lastName = phone;
     }
 
     public String getFirstName() {
@@ -28,11 +32,23 @@ public abstract class Person {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
+    }
+    @Override
+    public String toString() {
+        return String.format("Customer name: %s %s\nPhone: %s\nAddress: %s", firstName, lastName, phone, address.toString());
     }
 }
