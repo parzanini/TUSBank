@@ -45,7 +45,7 @@ public class BankStaff extends Person {
 
     @Override
         public String toString() {
-            return super.toString() + String.format("\nStaff ID: %d\nSalary: %.2f Position: %s", staffID, salary, position);
+            return String.format("Staff name: %s %s\nPhone: %s\nAddress: %s\nStaff ID: %d\nSalary: %.2f\nPosition: %s", getFirstName(), getLastName(), getPhone(), getAddress().toString(), getStaffID(), getSalary(), getPosition());
         }
 
 }

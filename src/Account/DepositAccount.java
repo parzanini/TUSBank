@@ -19,13 +19,13 @@ public class DepositAccount extends Account {
         return air;
     }
 
-    public void setAir(double air) {
+    public static void setAir(double air) {
         DepositAccount.air = air;
     }
 
 @Override
     public String toString() {
-        return super.toString() + String.format("Annual Interest Rate: %.2f\n", getAir());
+        return super.toString() + String.format("Annual Interest Rate: %.2f%%\n", getAir() * 100);
     }
 
 

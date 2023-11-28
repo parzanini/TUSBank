@@ -20,7 +20,7 @@ public class CurrentAccount extends Account {
         return air;
     }
 
-    public void setAir(double air) {
+    public static void setAir(double air) {
         CurrentAccount.air = air;
     }
 
@@ -35,7 +35,7 @@ public class CurrentAccount extends Account {
 
 @Override
     public String toString() {
-        return super.toString() + String.format("Annual Interest Rate: %.2f\nOverdraft: %.2f\n", getAir(), getOverdraft());
+        return super.toString() + String.format("Annual Interest Rate: %.2f%%\nOverdraft: %.2f\n", getAir() * 100, getOverdraft());
     }
 
 

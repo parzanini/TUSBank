@@ -61,6 +61,6 @@ public abstract class Account {
 
     @Override
     public String toString() {
-        return String.format("Account ID: %d\nOwner: %s\nBalance: %.2f\nDate Created: %s", getId(), getCustID().toString(), getBalance(), getDataCreated());
+        return String.format("Account ID: %d\nOwner: %s\nBalance: %.2f\nDate Created: %s ", getId(), getCustID().toString(), getBalance(), getDataCreated());
     }
 }
