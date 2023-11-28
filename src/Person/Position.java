@@ -4,4 +4,5 @@ public enum Position {
 
     BANKOFFICER,
     BANKMANAGER;
+
 }

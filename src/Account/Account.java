@@ -51,12 +51,16 @@ public abstract class Account {
         this.dataCreated = dataCreated;
     }
 
+    public static void setNextID(int nextID) {
+        Account.nextID = nextID;
+    }
+
     private static int getNextID() {
         return nextID++;
     }
 
     @Override
     public String toString() {
-        return String.format("Account ID: %d\nOwner: %s\nBalance: %.2f\nDate Created: %s\n", getId(), getCustID().toString(), getBalance(), getDataCreated());
+        return String.format("Account ID: %d\nOwner: %s\nBalance: %.2f\nDate Created: %s", getId(), getCustID().toString(), getBalance(), getDataCreated());
     }
 }

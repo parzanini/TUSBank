@@ -18,3 +18,8 @@ My Java Project for the first semester of the second year
 -Added Check Balance method
 -Added Admin Mode for bank employees
 -Started working on bank employee methods
+
+28/11/2023
+
+-Improvements to methods check balance, withdraw and deposit
+-Many other small improvements to the code

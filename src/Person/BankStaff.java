@@ -6,11 +6,15 @@ public class BankStaff extends Person {
 
     private int staffID;
     private double salary;
+    private Position position;
 
-    public BankStaff(String name, String lastName, String phone,Address address, int staffID, double salary) {
+
+
+    public BankStaff(String name, String lastName, String phone, Address address, int staffID, double salary, Position position) {
         super(name, lastName, phone,address);
         this.staffID = staffID;
         this.salary = salary;
+        this.position = position;
     }
 
     public int getStaffID() {
@@ -31,9 +35,17 @@ public class BankStaff extends Person {
         this.salary = salary;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     @Override
         public String toString() {
-            return super.toString() + String.format("\nStaff ID: %d\nSalary: %.2f", staffID, salary);
+            return super.toString() + String.format("\nStaff ID: %d\nSalary: %.2f Position: %s", staffID, salary, position);
         }
 
 }
