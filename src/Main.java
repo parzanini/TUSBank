@@ -46,16 +46,20 @@ public class Main {
                     if (menuOption == 1) {
                         addNewCustomer(tusCustomer,tusBankStaff);
                     } else if (menuOption == 2) {
-                        createNewAccount(tusAccounts, tusCustomer);
+                        createNewAccount(tusAccounts, tusCustomer,tusBankStaff);
                     } else if (menuOption == 3) {
-                        changeAIR(tusAccounts);
+                        changeAIR(tusAccounts, tusBankStaff);
                     } else if (menuOption == 4) {
-                       changeOverdraft(tusAccounts);
+                       changeOverdraft(tusAccounts, tusBankStaff);
                     } else if (menuOption == 5) {
                         listAllAccounts(tusCustomer, tusBankStaff);
                     } else if (menuOption == 6) {
+                        String position = authenticateStaff(tusBankStaff);
+                        if (position.equals("BANKMANAGER") || position.equals("BANKOFFICER")) {
                         for (Account a : tusAccounts) {
                             System.out.println(a.toString());
+                        } } else {
+                            System.out.println("Access denied.");
                         }
                     } else if (menuOption == 7) {
                              addNewBankOfficer(tusBankStaff);
@@ -72,10 +76,6 @@ public class Main {
             }
         } while (outterMenuOption != 0);
     }
-
-
-
-
     // ------------------------------------------- Dummy Creator Methods --------------------------------------------------
     private static void populateAccounts(ArrayList<Account> tusAccounts, ArrayList<Customer> tusCustomer) {
         LocalDate newDate = LocalDate.now();
@@ -232,7 +232,6 @@ public class Main {
             System.out.println("Access denied.");
         }
     }
-
     //Method to check if the ID already exists
     private static int checkCustomerID(int custID, ArrayList<Customer> tusCustomer) {
         for (Customer c : tusCustomer) {
@@ -246,15 +245,17 @@ public class Main {
         return custID;
     }
     //Method to create a new account
-    private static void createNewAccount(ArrayList<Account> tusAccounts, ArrayList<Customer> tusCustomer) {
+    private static void createNewAccount(ArrayList<Account> tusAccounts, ArrayList<Customer> tusCustomer, ArrayList<BankStaff> tusBankStaff) {
         Scanner input = new Scanner(System.in);
+        String position = authenticateStaff(tusBankStaff);
+        if (position.equals("BANKMANAGER") || position.equals("BANKOFFICER")) {
         System.out.println("Please enter the customer's ID");
         int custID = input.nextInt();
-        for (Customer c : tusCustomer) {
-            if (custID == c.getCustID()) {
+            for (Customer c : tusCustomer) {
+                if (custID == c.getCustID()) {
                 System.out.println("Please enter the account type to be created (1 - Current Account / 2 - Deposit Account)");
                 int option = input.nextInt();
-                if (option == 1) {
+                    if (option == 1) {
                     System.out.println("Please enter the account balance");
                     double balance = input.nextDouble();
                     System.out.println("Please enter the overdraft");
@@ -265,7 +266,7 @@ public class Main {
                     System.out.println("Account Linked to Customer:" + c.getCustID() + " " + c.getFirstName() + " " + c.getLastName());
                     System.out.println(currentAccount.toString());
                     System.out.println("Account created successfully");
-                } else if (option == 2) {
+                    } else if (option == 2) {
                     System.out.println("Please enter the account balance");
                     double balance = input.nextDouble();
                     LocalDate newDate = LocalDate.now();
@@ -274,13 +275,18 @@ public class Main {
                     System.out.println("Account Linked to Customer:" + c.getCustID() + " " + c.getFirstName() + " " + c.getLastName());
                     System.out.println(depositAccount.toString());
                     System.out.println("Account created successfully");
+                    }
                 }
             }
+        } else {
+            System.out.println("Access denied.");
         }
     }
     //Method to change the AIR
-    private static void changeAIR(ArrayList<Account> tusAccounts) {
+    private static void changeAIR(ArrayList<Account> tusAccounts, ArrayList<BankStaff> tusBankStaff) {
         Scanner input = new Scanner(System.in);
+        String position = authenticateStaff(tusBankStaff);
+        if (position.equals("BANKMANAGER") || position.equals("BANKOFFICER")) {
         System.out.println("1 - Change AIR for Current Accounts \n2 - Change AIR for Deposit Accounts");
         int option = input.nextInt();
         if (option == 1) {
@@ -293,15 +299,19 @@ public class Main {
             double air = input.nextDouble();
             DepositAccount.setAir(air);
             System.out.println("AIR changed successfully to " + air);
-        } else {
+            } else {
             System.out.println("Invalid option, please enter a valid option.");
 
+            }
+        } else {
+            System.out.println("Access denied.");
         }
     }
     //Method to change the overdraft
-    private static void changeOverdraft(ArrayList<Account> tusAccounts) {
-
+    private static void changeOverdraft(ArrayList<Account> tusAccounts, ArrayList<BankStaff> tusBankStaff) {
         Scanner input = new Scanner(System.in);
+        String position = authenticateStaff(tusBankStaff);
+        if (position.equals("BANKMANAGER") || position.equals("BANKOFFICER")) {
         System.out.println("Please enter the new overdraft");
         double overdraft = input.nextDouble();
         System.out.println("Please enter the account ID");
@@ -315,6 +325,9 @@ public class Main {
                     System.out.println("This account is not a Current Account");
                 }
             }
+        }
+        } else {
+            System.out.println("Access denied.");
         }
     }
     //Method to authenticate the staff
@@ -356,6 +369,7 @@ public class Main {
             String eircode = input.nextLine();
             System.out.println("Please enter the Bank Officer's ID");
             int staffID = input.nextInt();
+            checkOfficerID(staffID, tusBankStaff);
             System.out.println("Please enter the Bank Officer's salary");
             double salary = input.nextDouble();
             Position position2 = positionCheck();
@@ -367,11 +381,9 @@ public class Main {
             System.out.println("Access denied.");
         }
     }
-
-
-
     private static void listAllAccounts(ArrayList<Customer> tusCustomer, ArrayList<BankStaff> tusBankStaff) {
-        if (authenticateStaff(tusBankStaff).equals("BANKMANAGER") || authenticateStaff(tusBankStaff).equals("BANKOFFICER")) {
+        String position = authenticateStaff(tusBankStaff);
+        if (position.equals("BANKMANAGER") || position.equals("BANKOFFICER")) {
             System.out.println("List of customers: \n");
             for (Customer c : tusCustomer) {
                 System.out.println(c.toString() + "\n");
@@ -399,6 +411,16 @@ public class Main {
             positionCheck();
         }
         return position;
+    }
+    private static void checkOfficerID(int staffID, ArrayList<BankStaff> tusBankStaff) {
+        for (BankStaff b : tusBankStaff) {
+            if (staffID == b.getStaffID()) {
+                System.out.println("This ID already exists, please enter a new ID");
+                Scanner input = new Scanner(System.in);
+                staffID = input.nextInt();
+                checkOfficerID(staffID, tusBankStaff);
+            }
+        }
     }
 }
 

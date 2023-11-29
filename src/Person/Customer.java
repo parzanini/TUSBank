@@ -20,8 +20,6 @@ public class Customer extends Person {
         this.custID = custID;
     }
 
-
-
     @Override
     public String toString() {
         return super.toString() + String.format("Customer ID: %d", custID);

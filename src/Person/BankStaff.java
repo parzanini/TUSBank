@@ -8,8 +8,6 @@ public class BankStaff extends Person {
     private double salary;
     private Position position;
 
-
-
     public BankStaff(String name, String lastName, String phone, Address address, int staffID, double salary, Position position) {
         super(name, lastName, phone,address);
         this.staffID = staffID;
@@ -24,8 +22,6 @@ public class BankStaff extends Person {
     public void setStaffID(int staffID) {
         this.staffID = staffID;
     }
-
-
 
     public double getSalary() {
         return salary;
@@ -47,5 +43,4 @@ public class BankStaff extends Person {
         public String toString() {
             return String.format("Staff name: %s %s\nPhone: %s\nAddress: %s\nStaff ID: %d\nSalary: %.2f\nPosition: %s", getFirstName(), getLastName(), getPhone(), getAddress().toString(), getStaffID(), getSalary(), getPosition());
         }
-
 }
