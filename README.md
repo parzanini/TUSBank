@@ -30,3 +30,10 @@ My Java Project for the first semester of the second year
 -All methods created but testing are still required
 -After testing, error handling will be added
 -Overdraft method is not created yet
+
+03/12/2023
+
+-Small fixes in various methods
+-All methods are tested and working
+-Error handling is added and working
+-Ready for submission version 1.0

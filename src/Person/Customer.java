@@ -22,6 +22,6 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return super.toString() + String.format("Customer ID: %d", custID);
+        return super.toString() + String.format("\nCustomer ID: %d", custID);
     }
 }
